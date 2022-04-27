@@ -1,0 +1,28 @@
+{
+  "name": "tdd-exercise",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/anggadsatria/tdd-exercise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/anggadsatria/tdd-exercise/issues"
+  },
+  "homepage": "https://gitlab.com/anggadsatria/tdd-exercise#readme",
+  "dependencies": {
+    "express": "^4.18.0",
+    "jest": "^28.0.2",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.19.0",
+    "supertest": "^6.2.3"
+  }
+}
