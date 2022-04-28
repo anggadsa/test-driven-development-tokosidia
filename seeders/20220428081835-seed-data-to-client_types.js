@@ -1,24 +1,20 @@
 'use strict';
 
+const clientTypeData = require(`../masterdata/client_types.json`)
+
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    const clientType = clientTypeData.map((eachClientType) => {
+      eachClientType.createdAt = new Date()
+      eachClientType.updatedAt = new Date()
+      return eachClientType;
+    });
+
+    await queryInterface.bulkInsert('client_types', clientType);
+
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('client_types', null, { truncate: true, restartIdentity:true });
   }
 };
