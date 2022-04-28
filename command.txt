@@ -1,0 +1,4 @@
+CREATE TABLE :
+    1. sequelize model:generate --name client --attributes legal_name:string,npwp_number:integer,address:string,client_type_id:string
+    2. sequelize model:generate --name brand --attributes name:string,is_big_brand:boolean
+    3. sequelize model:generate --name client_type --attributes name:string
