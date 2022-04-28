@@ -1,7 +1,7 @@
 const { client } = require('../models');
 
 const clientController = {
-
+    
     getAllClient: async (req, res) => {
         try{
             const options = {
@@ -45,7 +45,21 @@ const clientController = {
     },
 
     createClient: async (req, res) => {
-        
+        try{
+            const {legal_name, npwp_number, address, client_type_id } = req.body;
+            const checkNpwp = await client.findOne( { where: { npwp_number: `${npwp_number}` } } )
+            if(checkNpwp) throw new Error(`NPWP is already registered`)
+            res.status(200).json({
+                status: `Success`,
+                result: clientById
+            })
+        } catch (error) {
+            res.status(400).json({
+                status: `Fail`,
+                result: error.message
+            })
+        }
+    
     }
 
 }
