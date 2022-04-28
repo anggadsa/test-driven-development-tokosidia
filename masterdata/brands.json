@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Nike",
+        "is_big_brand": true
+    },
+    {
+        "name": "Adidas",
+        "is_big_brand": true
+    },
+    {
+        "name": "New Era",
+        "is_big_brand": false
+    }
+]

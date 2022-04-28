@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING(75)
       },
       npwp_number: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       address: {
         type: Sequelize.STRING

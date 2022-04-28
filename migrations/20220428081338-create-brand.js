@@ -13,7 +13,8 @@ module.exports = {
         type: Sequelize.STRING(25)
       },
       is_big_brand: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       client_id:{
         allowNull: false,
