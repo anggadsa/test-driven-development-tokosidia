@@ -1,4 +1,6 @@
+require('dotenv').config()
 const { client } = require('../models');
+const { Op } = require("sequelize");
 
 const clientController = {
 
@@ -22,6 +24,10 @@ const clientController = {
 
     getAllClient: async (req, res) => {
         try{
+            // AUTHENTICATION
+            const { username, password } = req.query
+            if(username !== process.env.USER_ADMIN || password !== process.env.USER_ADMIN_PASS) throw new Error(`Forbidden`)
+            
             const options = {
                 attributes: { exclude: ['createdAt', `updatedAt`] }
             }
@@ -32,7 +38,7 @@ const clientController = {
                 result: allClient
             })
         } catch (error) {
-            return res.status(500).json({
+            return res.status(400).json({
                 status: `Fail`,
                 result: error.message
             })
@@ -77,6 +83,47 @@ const clientController = {
             })
         }
     
+    },
+
+    updateClient: async (req, res) => {
+        try {
+            // AUTHENTICATION
+            const { username, password } = req.query;
+            if(username !== process.env.USER_ADMIN || password !== process.env.USER_ADMIN_PASS) throw new Error(`Forbidden`)
+            
+            const { legal_name, npwp_number, address} = req.body;
+            const checkNpwp = await client.findOne({ 
+                where: { 
+                    legal_name: {
+                        [Op.like]: `%${legal_name}`
+                    },
+                    npwp_number: `${npwp_number}` 
+                }
+                
+            })
+            // console.log(checkNpwp.dataValues) //checkNpwp
+
+            if(!checkNpwp) throw new Error(`Cannot find that users`)
+            // console.log(checkNpwp.dataValues.id)
+            const update = await client.update(
+                {
+                    address: `${address}`,
+                    updatedAt: new Date()
+                },
+                {
+                    where: {id: checkNpwp.dataValues.id}
+                },
+            )
+            res.status(200).json({
+                status: `Success`,
+                result: checkNpwp.dataValues
+            })
+        } catch (error) {
+            res.status(400).json({
+                status: `Bad Request`,
+                result: error.message
+            })
+        }
     }
 
 }
