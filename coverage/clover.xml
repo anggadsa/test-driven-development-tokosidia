@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651237619319" clover="3.2.0">
-  <project timestamp="1651237619319" name="All files">
-    <metrics statements="82" coveredstatements="79" conditionals="19" coveredconditionals="14" methods="13" coveredmethods="13" elements="114" coveredelements="106" complexity="0" loc="82" ncloc="82" packages="4" files="8" classes="8"/>
+<coverage generated="1651266982234" clover="3.2.0">
+  <project timestamp="1651266982235" name="All files">
+    <metrics statements="96" coveredstatements="89" conditionals="29" coveredconditionals="21" methods="14" coveredmethods="14" elements="139" coveredelements="124" complexity="0" loc="96" ncloc="96" packages="4" files="8" classes="8"/>
     <package name="tdd-exercise">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.js" path="C:\xampp\htdocs\BINAR\GOLD\CHAPTER 6\tdd-exercise\app.js">
@@ -17,37 +17,50 @@
       </file>
     </package>
     <package name="tdd-exercise.controllers">
-      <metrics statements="28" coveredstatements="26" conditionals="10" coveredconditionals="8" methods="4" coveredmethods="4"/>
+      <metrics statements="41" coveredstatements="35" conditionals="20" coveredconditionals="15" methods="5" coveredmethods="5"/>
       <file name="client.controller.js" path="C:\xampp\htdocs\BINAR\GOLD\CHAPTER 6\tdd-exercise\controllers\client.controller.js">
-        <metrics statements="28" coveredstatements="26" conditionals="10" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <metrics statements="41" coveredstatements="35" conditionals="20" coveredconditionals="15" methods="5" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="cond" truecount="4" falsecount="0"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
-        <line num="45" count="2" type="stmt"/>
-        <line num="46" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="50" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="66" count="1" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
-        <line num="68" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="84" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="92" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="106" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="117" count="0" type="stmt"/>
+        <line num="122" count="1" type="stmt"/>
+        <line num="131" count="1" type="stmt"/>
       </file>
     </package>
     <package name="tdd-exercise.models">
@@ -100,16 +113,17 @@
       </file>
     </package>
     <package name="tdd-exercise.routes">
-      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="client.router.js" path="C:\xampp\htdocs\BINAR\GOLD\CHAPTER 6\tdd-exercise\routes\client.router.js">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
       </file>
       <file name="index.router.js" path="C:\xampp\htdocs\BINAR\GOLD\CHAPTER 6\tdd-exercise\routes\index.router.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
