@@ -72,9 +72,17 @@ const clientController = {
             const {legal_name, npwp_number, address, client_type_id } = req.body;
             const checkNpwp = await client.findOne( { where: { npwp_number: `${npwp_number}` } } )
             if(checkNpwp) throw new Error(`NPWP is already registered`)
+            const insertNewClient = await client.create({
+                legal_name: legal_name,
+                npwp_number: npwp_number,
+                address: address, 
+                client_type_id: client_type_id,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            })
             return res.status(200).json({
                 status: `Success`,
-                result: clientById
+                result: insertNewClient
             })
         } catch (error) {
             return res.status(400).json({
@@ -114,16 +122,44 @@ const clientController = {
                     where: {id: checkNpwp.dataValues.id}
                 },
             )
-            res.status(200).json({
+            return res.status(200).json({
                 status: `Success`,
                 result: checkNpwp.dataValues
+            })
+        } catch (error) {
+            return res.status(400).json({
+                status: `Bad Request`,
+                result: error.message
+            })
+        }
+    },
+
+    deleteClient: async (req, res) =>  {
+        try{
+            const { username, password } = req.query;
+            const { legal_name, npwp_number } = req.body;
+            if(username !== process.env.USER_ADMIN || password !== process.env.USER_ADMIN_PASS) throw new Error(`Forbidden`);
+            const options = {
+                where: {
+                    legal_name: legal_name,
+                    npwp_number: `${npwp_number}`
+                }
+            }
+            // Check is client is exist
+            const findClient = await client.findOne(options)
+            if(findClient === null) throw new Error(`Client is not found`)
+            // delete user if exist
+            const deleteUser = await client.destroy(options)
+            res.status(200).json({
+                status: `Success`,
+                result: deleteUser.dataValues
             })
         } catch (error) {
             res.status(400).json({
                 status: `Bad Request`,
                 result: error.message
             })
-        }
+        } 
     }
 
 }
