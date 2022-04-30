@@ -34,7 +34,7 @@ describe(`controller jestTest`, () =>  {
     })
 })
 
-describe('GET /users', () => {
+describe('GET /clients', () => {
     test(`get all clients all data`, async () => {
         const auth = `?username=superadmin&password=Password123`
         const response = await request(app).get(`/api/v1.0/clients/${auth}`);
@@ -53,13 +53,13 @@ describe('GET /users', () => {
         expect(result).toBe(`Forbidden`)
     })
 
-    test(`get user by id`, async () => {
-        const response = await request(app).get(`/api/v1.0/clients/1`)
+    test(`get clients by id`, async () => {
+        const response = await request(app).get(`/api/v1.0/clients/2`)
         const { status, result } = response.body
         expect(response.status).toBe(200)
     })
 
-    test(`fail get user by id`, async () => {
+    test(`fail get clients by id`, async () => {
         const id = 100
         const response = await request(app).get(`/api/v1.0/clients/${id}`)
         const { status, result } = response.body
@@ -70,11 +70,11 @@ describe('GET /users', () => {
 
 });
 
-describe(`POST /clients/create`, () => {
+describe(`POST /clients`, () => {
     test(`fail create clients`, async () => {
         const response = await request(app).post(`/api/v1.0/clients/create`).send({
-            "legal_name": "Angga Dwi Satria",
-            "npwp_number": "09.254.294.3-499900",
+            "legal_name": "Budi Satria",
+            "npwp_number": "08.254.294.3-213123",
             "address": "Ngaban RT6 RW2 Tanggulangin Sidoarjo",
             "client_type_id": 1
         })
@@ -85,7 +85,7 @@ describe(`POST /clients/create`, () => {
     })
 })
 
-describe(`PUT /clients/update`, () => {
+describe(`PUT /clients`, () => {
     test(`fail update clients`, async () => {
         const auth = `?username=superadmin&password=Psassword123`
         const response = await request(app).put(`/api/v1.0/clients/update/${auth}`).send({
@@ -97,5 +97,20 @@ describe(`PUT /clients/update`, () => {
         const { status, result } = response.body
         expect(response.status).toBe(400)
         expect(status).toBe(`Bad Request`)
+    })
+})
+
+describe(`DELETE /clients`, () => {
+    test(`fail to find before delete clients`, async () => {
+        const auth = `?username=superadmin&password=Password123`
+        const response = await request(app).delete(`/api/v1.0/clients/delete/${auth}`).send({
+            "legal_name": "Angga Dwi Satria",
+            "npwp_number": "09.254.294.3-499900",
+            "address": "Ngaban RT6 RW2 Tanggulangin Sidoarjo",
+            "client_type_id": 1
+        })
+        const { status, result } = response.body;
+        expect(response.status).toBe(400);
+        expect(result).toBe(`Client is not found`)
     })
 })
