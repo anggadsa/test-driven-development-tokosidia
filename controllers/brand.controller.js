@@ -2,7 +2,6 @@ require('dotenv').config()
 const { brand } = require('../models');
 const { Op } = require("sequelize");
 
-
 const brandController = {
     getAllBrand: async (req, res) => {
         try {
@@ -21,7 +20,7 @@ const brandController = {
         }
     },
 
-    getBrandById: async(req, res) => {
+    getBrandById: async (req, res) => {
         try{
             const id = req.params.id
             const { username, password } = req.query
@@ -87,12 +86,40 @@ const brandController = {
                     updatedAt: new Date()
                 },
                 {
-                    where: {id: checkBrandIsExist.dataValues.id}
+                    where: {name: name, client_id: client_id}
                 }
             )
             return res.status(200).json({
                 status: `Success`,
                 result: {updateBrand, created: true}
+            })
+        } catch (error) {
+            return res.status(400).json({
+                status: `Fail`,
+                result: error.message
+            })
+        }
+    },
+    
+    deleteBrand: async (req, res) => {
+        try {
+            const { username, password } = req.query;
+            if(username !== process.env.USER_ADMIN || password !== process.env.USER_ADMIN_PASS) throw new Error(`Forbidden`);
+            const { name, client_id } = req.body;
+            const options = {
+                where: {
+                    name: name,
+                    client_id: client_id
+                }
+            }
+            // Check is brands is exist
+            const brandIsExist = await brand.findOne(options);
+            if(brandIsExist === null) throw new Error(`Brand is not exist`);
+            // delete brand
+            const deleteBrand = await brand.destroy(options);
+            return res.status(200).json({
+                status: `Success`,
+                result: {deleteBrand, deleted: true}
             })
         } catch (error) {
             return res.status(400).json({
